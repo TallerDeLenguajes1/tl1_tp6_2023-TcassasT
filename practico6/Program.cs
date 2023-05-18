@@ -1,10 +1,9 @@
 ﻿Random random = new Random();
 
 Console.Write("Ingrese un numero A: ");
-string? input = Console.ReadLine();
 int inputParsesado;
 
-if ((input != null) && (int.TryParse(input, out inputParsesado))) {
+if (int.TryParse(Console.ReadLine(), out inputParsesado)) {
   int numeroAleatorio = random.Next(100) + 1;
 
   Console.WriteLine("Basado en el numero aleatorio B: " + numeroAleatorio);
