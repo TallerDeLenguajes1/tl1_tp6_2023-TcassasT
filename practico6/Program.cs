@@ -1,5 +1,4 @@
-﻿string? input;
-int operacion;
+﻿int operacion;
 
 Console.WriteLine("¿Que operación desea realizar?");
 
@@ -10,25 +9,19 @@ do {
   Console.WriteLine(" 4- Dividir");
   Console.WriteLine(" 0- Salir");
 
-  input = Console.ReadLine();
-
-  if ((input != null) & (int.TryParse(input, out operacion))) {
+  if (int.TryParse(Console.ReadLine(), out operacion)) {
     if (operacion == 0) continue;
     if (operacion >= 1 && operacion <= 4) {
       int inputParseadoA, inputParseadoB;
       bool inputsValidos = true;
 
       Console.Write("Ingrese el primer numero: ");
-      input = Console.ReadLine();
-
-      if (!(int.TryParse(input, out inputParseadoA))) {
+      if (!(int.TryParse(Console.ReadLine(), out inputParseadoA))) {
         inputsValidos = false;        
       }
 
-      Console.Write("Ingrese el segundo numero: ");
-      input = Console.ReadLine();
-      
-      if (!(int.TryParse(input, out inputParseadoB))) {
+      Console.Write("Ingrese el segundo numero: ");      
+      if (!(int.TryParse(Console.ReadLine(), out inputParseadoB))) {
         inputsValidos = false;      
       }
 
