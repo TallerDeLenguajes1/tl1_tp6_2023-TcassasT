@@ -1,24 +1,52 @@
-﻿Random random = new Random();
+﻿string? input;
+int operacion;
 
-Console.Write("Ingrese un numero A: ");
-string? input = Console.ReadLine();
-int inputParsesado;
+Console.WriteLine("¿Que operación desea realizar?");
+Console.WriteLine(" 1- Sumar");
+Console.WriteLine(" 2- Restar");
+Console.WriteLine(" 3- Multiplicar");
+Console.WriteLine(" 4- Dividir");
 
-if ((input != null) && (int.TryParse(input, out inputParsesado))) {
-  int numeroAleatorio = random.Next(100) + 1;
+input = Console.ReadLine();
 
-  Console.WriteLine("Basado en el numero aleatorio B: " + numeroAleatorio);
+if ((input != null) && (int.TryParse(input, out operacion))) {
+  if (operacion >= 1 && operacion <= 4) {
+    int inputParseadoA, inputParseadoB;
+    bool inputsValidos = true;
 
-  if (inputParsesado > 0) {
-    int auxiliar = inputParsesado;
+    Console.Write("Ingrese el primer numero: ");
+    input = Console.ReadLine();
 
-    inputParsesado = numeroAleatorio;
-    numeroAleatorio = auxiliar;
+    if (!(int.TryParse(input, out inputParseadoA))) {
+      inputsValidos = false;        
+    }
 
-    Console.WriteLine("Resultado invertido A: " + inputParsesado + " B: " + numeroAleatorio);
+    Console.Write("Ingrese el segundo numero: ");
+    input = Console.ReadLine();
+    
+    if (!(int.TryParse(input, out inputParseadoB))) {
+      inputsValidos = false;      
+    }
+
+    if (inputsValidos) {
+      switch(operacion) {
+        case 1:
+          Console.WriteLine(inputParseadoA + " + " + inputParseadoB + " = " + (inputParseadoA + inputParseadoB));
+          break;
+        case 2:
+          Console.WriteLine(inputParseadoA + " - " + inputParseadoB + " = " + (inputParseadoA - inputParseadoB));
+          break;
+        case 3:
+          Console.WriteLine(inputParseadoA + " * " + inputParseadoB + " = " + (inputParseadoA * inputParseadoB));
+          break;
+        case 4:
+          Console.WriteLine(inputParseadoA + " / " + inputParseadoB + " = " + (inputParseadoA / inputParseadoB));
+          break;
+      }
+    } else {
+      Console.WriteLine("Inputs invalidos, por favor ingrese numeros.");
+    }
   } else {
-    Console.WriteLine("Resultado A: " + inputParsesado + " B: " + numeroAleatorio);
+    Console.WriteLine("Opción invalida, vuelva a intentar.");
   }
-} else {
-  Console.WriteLine("El valor ingresado o es nulo o no es un numero.");
 }
